@@ -6,10 +6,12 @@
 </head>
 
 <body>
-<div>假設我惡意的從非伺服器產生的表單傳送到伺服器</div>
-<form name="" method="post" action="Demo.php">
-    <input name="write" type="text" value="write something...">
-    <input name="go" class="" type="submit" value="GOGOGO" >
+<div>假設我是惡意的從非伺服器產生的表單，傳送到伺服器</div>
+<form method="post" action="Server.php">
+    
+    <input name="write" type="text" autofocus>
+    <button type="submit">send</button>
+
 </form>
 
 </body>
