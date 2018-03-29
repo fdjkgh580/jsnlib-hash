@@ -7,8 +7,8 @@ $Ajax = new Jsnlib\Hash\Ajax;
 
 if (empty($_POST['act'])) $_POST['act'] = null;
 
-if ($_POST['act'] == "test") {
-	
+if ($_POST['act'] == "test") 
+{	
 	//比對
 	$thehash = $_POST['thehash'];
 	$array = $Ajax->check($thehash);
@@ -19,7 +19,7 @@ if ($_POST['act'] == "test") {
 	//使用json回傳
 	echo json_encode($array);
 	die;
-	}
+}
 
 
 /*
@@ -57,29 +57,32 @@ $(function (){
 			'act'		:	'test',
 			'content'	:	$(".text").val(),
 			'thehash'	:	$(".hash").val()
-			}, function (data){
+		}, function (data){
+			
+			//錯誤
+			if (data.status == "error") 
+			{
+			    $(".result").html("比對錯誤!<br>");
+			    $(".result").append("傳輸的hash : " + data.from_hash + "<br>");
+			    $(".result").append("伺服器的hash: " + data.here_hash + "<br>");
+			}
+			//成功
+			else if (data.status == "success") 
+			{
+			    $(".hash").val(data.newhash);
+			    $(".result").html("成功!您輸入的是:" + data.user_write);
+			
+			}
+			//例外
+			else 
+			{
+			    $(".result").html("未預期的錯誤！");
+			}
 				
-				//錯誤
-				if (data.status == "error") {
-					$(".result").html("比對錯誤!<br>");
-					$(".result").append("傳輸的hash : " + data.from_hash + "<br>");
-					$(".result").append("伺服器的hash: " + data.here_hash + "<br>");
-					}
-					
-				//成功
-				else if (data.status == "success") {
-					$(".hash").val(data.newhash);
-					$(".result").html("成功!您輸入的是:" + data.user_write);
-					}
-					
-				//例外
-				else {
-					$(".result").html("未預期的錯誤！");
-					}
-					
-			},"json");
-		})
-	})
+		}, "json");
+
+	});
+})
 </script>
 </head>
 
