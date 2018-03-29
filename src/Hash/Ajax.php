@@ -50,16 +50,19 @@ class Ajax
 
 
 		//不同?
-		if (($from_hash != $here_hash) or empty($from_hash) or empty($here_hash)) {
+		if (($from_hash != $here_hash) or empty($from_hash) or empty($here_hash)) 
+		{
 			$ary['status']		=		"error";
 			$ary['from_hash']	=		$from_hash;
 			$ary['here_hash']	=		$here_hash;
-			}
-		else {			
+		}
+		else 
+		{			
 			//回傳一個新的hash
 			$ary['status']		=		"success";
 			$ary['newhash']		=		$this->put();
-			}
+		}
+		
 		return $ary;
 	}
 	
