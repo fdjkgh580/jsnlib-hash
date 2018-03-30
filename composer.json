@@ -2,7 +2,7 @@
     "name": "jsnlib/hash",
     "type": "library",
     "description": "",
-    "keywords": ["array", "object", "convert", "ArrayObject"],
+    "keywords": ["hash", "ajax", "form"],
     "license": "MIT",
     "require": {
         "php": ">=7.0.0"
